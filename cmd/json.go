@@ -25,7 +25,11 @@ var jsonCmd = &cobra.Command{
 func init() {
 	jsonCmd.Flags().StringVarP(&inFile, "input", "i", "", "Path to CSV file")
 	jsonCmd.Flags().StringVarP(&outFile, "output", "o", "", "Path to JSON file")
-	jsonCmd.MarkFlagRequired("input")
-	jsonCmd.MarkFlagRequired("output")
+	if err := jsonCmd.MarkFlagRequired("input"); err != nil {
+		fmt.Printf("Error setting required flag: %v\n", err)
+	}
+	if err := jsonCmd.MarkFlagRequired("output"); err != nil {
+		fmt.Printf("Error setting required flag: %v\n", err)
+	}
 	rootCmd.AddCommand(jsonCmd)
 }

@@ -21,7 +21,11 @@ var parquetArrowCmd = &cobra.Command{
 func init() {
 	parquetArrowCmd.Flags().StringVarP(&inFile, "input", "i", "", "Path to CSV file")
 	parquetArrowCmd.Flags().StringVarP(&outFile, "output", "o", "", "Path to Parquet file")
-	parquetArrowCmd.MarkFlagRequired("input")
-	parquetArrowCmd.MarkFlagRequired("output")
+	if err := parquetArrowCmd.MarkFlagRequired("input"); err != nil {
+		fmt.Printf("Error setting required flag: %v\n", err)
+	}
+	if err := parquetArrowCmd.MarkFlagRequired("output"); err != nil {
+		fmt.Printf("Error setting required flag: %v\n", err)
+	}
 	rootCmd.AddCommand(parquetArrowCmd)
 }
