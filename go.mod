@@ -33,3 +33,5 @@ require (
 )
 
 require github.com/apache/arrow-go/v18 v18.2.0
+
+require github.com/sirupsen/logrus v1.9.3
